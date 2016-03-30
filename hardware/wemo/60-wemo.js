@@ -21,7 +21,8 @@ module.exports = function(RED) {
     function WemoOut(n) {
         RED.nodes.createNode(this,n);
         this.ipaddr = n.ipaddr;
-        this.wemoSwitch = new Wemo(n.ipaddr);
+        this.port = n.port;
+        this.wemoSwitch = new Wemo(n.ipaddr,n.port);
         var node = this;
 
         this.on("input", function(msg) {
@@ -38,7 +39,8 @@ module.exports = function(RED) {
     function WemoIn(n) {
         RED.nodes.createNode(this,n);
         this.ipaddr = n.ipaddr;
-        this.wemoSwitch = new Wemo(n.ipaddr);
+        this.port = n.port;
+        this.wemoSwitch = new Wemo(n.ipaddr,n.port);
         this.wemoSwitch.state = 0;
         var node = this;
 
